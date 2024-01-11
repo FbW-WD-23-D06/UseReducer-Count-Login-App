@@ -27,19 +27,19 @@ function App() {
   //   setCounter(counter - 1)
   // }
 
-  const increament = ()=>{
+  const increment = ()=>{
     dispatch({type:"increment"})
   }
-  const decreament = ()=>{
+  const decrement = ()=>{
     dispatch({type:"decrement"})
   }
 
   return (
     <>
     <div>
-      <button onClick={increament}>+</button>
+      <button onClick={increment}>+</button>
       <h1>{counter.count}</h1>
-      <button onClick={decreament}>-</button>
+      <button onClick={decrement}>-</button>
    </div>
     </>
   )
