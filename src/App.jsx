@@ -6,16 +6,19 @@ const reducer = (counter , action)=>{
   // console.log("state",state);
   switch(action.type){
     case "increment":{
-      return { count : counter.count + 1};
+      return { ...counter,count : counter.count + 1};
     }
     case "decrement":{
-      return {count : counter.count - 1}
+      return {...counter,count : counter.count - 1}
+    }
+    case "changeName":{
+      return {...counter,name : action.newName }
     }
   }
 }
 function App() {
   // initialState object
-  const initialState = {count : 0}
+  const initialState = {count : 0, name: "John"}
   // const [counter, setCounter] = useState(0);
   const [counter, dispatch]= useReducer(reducer, initialState);
   
@@ -34,12 +37,19 @@ function App() {
     dispatch({type:"decrement"})
   }
 
+  const changeName =(e)=>{
+    dispatch({type:"changeName", newName : e.target.value})
+  }
+
   return (
     <>
     <div>
       <button onClick={increment}>+</button>
       <h1>{counter.count}</h1>
       <button onClick={decrement}>-</button>
+      <br />
+      <input type='text'  onChange={changeName}/>
+      <h2>Your name is {counter.name}</h2>
    </div>
     </>
   )
