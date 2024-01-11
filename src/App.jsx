@@ -12,7 +12,9 @@ const reducer = (counter , action)=>{
       return {...counter,count : counter.count - 1}
     }
     case "changeName":{
-      return {...counter,name : action.newName }
+      counter.name = action.newName
+      return counter.name
+      // return {...counter,name : action.newName }
     }
   }
 }
